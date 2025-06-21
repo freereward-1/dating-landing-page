@@ -3,66 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Find Your Perfect Match</title>
+  <title>Find Your Match</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      text-align: center;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
+
+    body {
+      background: linear-gradient(to right, #ff6a88, #ff99ac);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
     .container {
-      padding: 40px 20px;
+      background: #fff;
+      color: #333;
+      border-radius: 16px;
+      max-width: 420px;
+      width: 100%;
+      padding: 25px 25px 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1.2s ease;
     }
-    img.hero {
-      max-width: 100%;
-      border-radius: 10px;
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .container img {
+      width: 100%;
+      border-radius: 12px;
       margin-bottom: 20px;
     }
-    h1 {
-      font-size: 2.5em;
+
+    .container h1 {
+      font-size: 24px;
       margin-bottom: 10px;
+      color: #e91e63;
     }
-    p {
-      font-size: 1.1em;
-      margin-bottom: 30px;
+
+    .container p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
-    .cta-button {
-      padding: 15px 30px;
-      background-color: #ff3366;
-      color: #fff;
-      font-size: 1.2em;
+
+    .timer {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff1744;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ff1744;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
+      border-radius: 30px;
       text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: pulse 1.5s infinite;
     }
-    .cta-button:hover {
-      background-color: #e6004c;
+
+    .btn:hover {
+      background: #d50000;
     }
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #444;
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .label {
+      display: inline-block;
+      background: #ff1744;
+      color: white;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="smartlink-dating.jpg" alt="Dating Image" class="hero" />
-    <h1>Meet Local Singles Today</h1>
-    <p>Connect with real people in your area and find love or friendship. 100% free to start!</p>
-    
-    <!-- 🔗 Change the below link to your actual MyLead Smartlink -->
-    <a class="cta-button" href="https://example.com/your-mylead-link" target="_blank">
-      Start Now ❤️
-    </a>
 
-    <footer>
-      <p>© 2025 LoveFinder™</p>
-    </footer>
+  <div class="container">
+    <span class="label">Only for Singles</span>
+    <img src="https://raw.githubusercontent.com/freereward-1/dating-landing-page/main/assets/Screenshot_20250621_122524_com_google_android_apps_photos_HomeActivity~2.jpg" alt="Dating App">
+    
+    <h1>Meet Local Singles</h1>
+    <p>Find your perfect match in just a few clicks! Limited time offer – claim your chance now.</p>
+
+    <div class="timer" id="countdown">03:00</div>
+
+    <a href="https://your-cpa-link.com" class="btn">Claim Reward</a>
   </div>
+
+  <script>
+    let time = 180; // 3 minutes in seconds
+    const countdown = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      countdown.textContent = 
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      if (time > 0) time--;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
 </body>
-  </html>
+</html>
